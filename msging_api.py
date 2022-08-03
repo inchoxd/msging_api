@@ -396,6 +396,7 @@ class Richmenu(AccessToken):
                 }
 
         r = requests.post(url=uri, headers=headers)
+        status_code = r.status_code
         if status_code != 200:
             r_json = r.json()
             r_json['status_code'] = status_code
