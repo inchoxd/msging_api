@@ -389,6 +389,20 @@ class Richmenu(AccessToken):
             return r_json
 
 
+    def link_richmenu(self, access_token, user_id, richmenu_id):
+        uri = f'{self.base_domain}/v2/bot/user/{user_id}/richmenu/{richmenu_id}'
+        headers = {
+                'Authorization':f'Bearer {access_token}'
+                }
+
+        r = requests.post(url=uri, headers=headers)
+        if status_code != 200:
+            r_json = r.json()
+            r_json['status_code'] = status_code
+
+            return r_json
+
+
     def delete_richmenu_alias(self, access_token, richmenu_alias):
         uri = f'{self.base_domain}/v2/bot/richmenu/alias/{richmenu_alias}'
         headers = {
